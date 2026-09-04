@@ -50,10 +50,8 @@ type CheckoutStatus struct {
 
 // SelectCoinRequest specifies the blockchain and token for checkout.
 type SelectCoinRequest struct {
-	Chain    string `json:"chain"`
-	Symbol   string `json:"symbol"`
-	Token    string `json:"token"`
-	Currency int    `json:"currency"`
+	Chain  string `json:"chain"`
+	Symbol string `json:"symbol"`
 }
 
 // ApplyDiscountRequest applies a discount code to a checkout session.
