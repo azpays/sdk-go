@@ -72,9 +72,9 @@ func (s *CheckoutService) GetSession(ctx context.Context, token string) (*Checko
 	return &resp.Data, nil
 }
 
-// ListCoins returns available coins for a checkout session.
-func (s *CheckoutService) ListCoins(ctx context.Context, token string) ([]any, error) {
-	var resp Response[[]any]
+// ListCoins returns available coins/assets for a checkout session.
+func (s *CheckoutService) ListCoins(ctx context.Context, token string) ([]AssetDefinition, error) {
+	var resp Response[[]AssetDefinition]
 	err := s.client.transport.get(ctx, fmt.Sprintf("/v1/checkout/%s/coins", token), &resp)
 	if err != nil {
 		return nil, err
