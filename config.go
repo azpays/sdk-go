@@ -1,6 +1,9 @@
 package azpays
 
-import "net/http"
+import (
+	"net/http"
+	"time"
+)
 
 // Config holds all configuration for the AzPays API client.
 type Config struct {
@@ -63,3 +66,15 @@ func WithMaxRetries(n int) Option {
 		c.MaxRetries = n
 	}
 }
+
+// WithTimeout sets the HTTP request timeout.
+func WithTimeout(d time.Duration) Option {
+	return func(c *Config) {
+		if c.HTTPClient == nil {
+			c.HTTPClient = &http.Client{Timeout: d}
+		} else {
+			c.HTTPClient.Timeout = d
+		}
+	}
+}
+
